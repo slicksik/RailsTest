@@ -1,5 +1,7 @@
 RailsTest::Application.routes.draw do
-  resources :users
+  resources :users do
+resources :tweets
+end
 match '/' => 'User#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,7 +52,7 @@ match '/' => 'User#index'
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+ root :to => 'User#index'
 
   # See how all your routes lay out with "rake routes"
 
@@ -58,3 +60,4 @@ match '/' => 'User#index'
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 end
+
