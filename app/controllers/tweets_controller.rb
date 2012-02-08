@@ -1,6 +1,12 @@
 class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
+  before_filter :get_user
+  
+  def get_user
+    @user = User.find(params[:user_id])
+  end
+  
   def index
     @tweets = Tweet.all
 
@@ -13,7 +19,7 @@ class TweetsController < ApplicationController
   # GET /tweets/1
   # GET /tweets/1.json
   def show
-    @tweet = Tweet.find(params[:id])
+    @tweet = @user.tweets.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
