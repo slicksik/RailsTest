@@ -1,4 +1,6 @@
 RailsTest::Application.routes.draw do
+  resources :tasks
+
   resources :users do
 resources :tweets
 end
