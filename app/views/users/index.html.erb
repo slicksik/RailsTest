@@ -14,7 +14,7 @@
     <td><%= user.name %></td>
     <td><%= user.email %></td>
 <td> <% user.tasks.each do |task| %>
-	<%= link_to  task.name, task %>
+	<%= link_to  task.name, [task.user, task] %>
 	<% end %>
 	</td>
     <td><%= link_to 'Show', user %></td>

@@ -1,10 +1,13 @@
 RailsTest::Application.routes.draw do
-  resources :tasks
 
-  resources :users 
+  resources :users do 
+    resources :tasks
+  end
 resources :tweets
 
-match '/' => 'User#index'
+root :to => 'users#index'
+
+match '/' => 'users#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

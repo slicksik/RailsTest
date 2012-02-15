@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
+ before_filter :get_user
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = @user.tasks.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task = Task.find(params[:id])
+    @task = @user.tasks.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -79,5 +80,10 @@ class TasksController < ApplicationController
       format.html { redirect_to tasks_url }
       format.json { head :no_content }
     end
+  end
+  
+  private 
+  def get_user
+    @user = User.find(params[:user_id])
   end
 end
